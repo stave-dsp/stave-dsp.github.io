@@ -1,0 +1,24 @@
+# The hero's code is the stave crate's doctested example at the newest
+# release tag (scripts/hero.py). This fails when a release moves on and
+# the page has not been regenerated: run `python3 scripts/hero.py`.
+name: hero
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: hero matches the newest release
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 scripts/hero.py --check

@@ -11,6 +11,7 @@
   --win-dim: #8a877c;
   --win-k: #f08a6e;
   --win-n: #e2c27a;
+  --win-s: #b5c98a;
   --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
   --sans: "IBM Plex Sans", system-ui, sans-serif;
 }
@@ -196,13 +197,24 @@ h1 {
   font: normal 400 12px var(--mono);
 }
 
+/* The whole example shows: long lines wrap (a sideways scrollbar would
+   sit below the fold of the vertical one, so a line read as clipped). */
 .window pre {
+  max-height: 560px;
+  overflow: auto;
   padding: 18px 20px 22px;
   font-size: 13px;
   line-height: 1.6;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+
+.window-bar em a {
+  color: inherit;
 }
 
 .window .k { color: var(--win-k); }
+.window .s { color: var(--win-s); }
 .window .n { color: var(--win-n); }
 .window .c { color: var(--win-dim); }
 
